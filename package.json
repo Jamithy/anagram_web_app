@@ -1,0 +1,31 @@
+{
+  "name": "anagram_web_app",
+  "version": "0.0.1",
+  "description": "A single-page application that: (1) allows users to check whether two words are anagrams (2), shows 10 most popular anagram requests across all users",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "ts-node node_modules/jasmine/bin/jasmine"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Jamie.Sgro/anagram_web_app.git"
+  },
+  "keywords": [
+    "webapp",
+    "anagram",
+    "code",
+    "test"
+  ],
+  "author": "Jamie Sgro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/Jamie.Sgro/anagram_web_app/issues"
+  },
+  "homepage": "https://gitlab.com/Jamie.Sgro/anagram_web_app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.0.3"
+  }
+}
