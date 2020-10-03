@@ -1,0 +1,21 @@
+//- PARAMETER: error {string} error message if error
+//- PARAMETER: success {string} success message if successful
+
+extends template/app.pug
+
+block content
+
+   h2 Anagram Web App
+      form(action="/" method="post")
+         label(for='word1') Word 1
+         input(type='text' name='word1' minlength='1' maxlength='50' autofocus required)
+         label(for='word2') Word 2
+         input(type='text' name='word2' minlength='1' maxlength='50' required)
+
+         input(type='submit' class='btn' value="Check") 
+      
+      .notification
+         if error
+            h2.notification__error #{error}
+         if success 
+            h2.notification__success #{success}
