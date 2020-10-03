@@ -1,4 +1,4 @@
-import { HttpException } from "../models/IHttpException";
+import { HttpException } from "./IHttpException";
 import * as Express from 'express'; // needed for types
 
 /**
