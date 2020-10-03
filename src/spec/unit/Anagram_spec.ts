@@ -17,11 +17,12 @@ Acceptance criteria should be written in terms of scenarios and implemented as c
 */
 
 describe("As a current user", ()=> {
-  describe("I want to submit valid anagram pairs", ()=> {  
+  describe("I want to submit valid anagram pairs", ()=> {
     it("which return as valid", ()=> {
       expect(Factory.createAnagram("wolf", "flow").isAnagram()).toBe(true);
       expect(Factory.createAnagram("restful", "fluster").isAnagram()).toBe(true);
       expect(Factory.createAnagram("knee", "keen").isAnagram()).toBe(true);
+      expect(Factory.createAnagram("listen", "silent").isAnagram()).toBe(true);
     });
 
     describe("regardless of capital casing", ()=> {
@@ -102,6 +103,14 @@ describe("As a current user", ()=> {
     it("which return as invalid", ()=> {
       // Not a dictionary word
       expect(Factory.createAnagram("abc", "bca").isAnagram()).toBe(false);
+    });
+  });
+
+  describe("I want to submit non-english anagrams", ()=> {
+    it("which return as invalid", ()=> {
+      expect(Factory.createAnagram("汉字", "字汉").isAnagram()).toBe(false);
+      expect(Factory.createAnagram("漢字", "字漢").isAnagram()).toBe(false);
+      expect(Factory.createAnagram("Ψβ", "βΨ").isAnagram()).toBe(false);
     });
   });
 });
