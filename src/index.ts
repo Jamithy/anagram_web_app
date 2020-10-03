@@ -1,5 +1,7 @@
 import * as Express from 'express'
 import * as session from 'express-session';
+import { CatchAllController } from './controllers/CatchAllController';
+import { ExpressErrorController } from './controllers/ExpressErrorController';
 import { HomeController } from './controllers/HomeController';
 import { IController } from './controllers/IController';
 
@@ -71,3 +73,7 @@ function route(controller: new () => IController, reqType: httpReq) {
 // TODO: #4_create_factory this is a concrete implementation, can we get a factory to abstract it?
 app.get('/', route(HomeController, httpReq.get));
 app.post('/', route(HomeController, httpReq.post));
+
+// Handles 404 and 500 errors
+app.use((new CatchAllController()).onGet);
+app.use((new ExpressErrorController()).handle);
