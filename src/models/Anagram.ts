@@ -12,6 +12,7 @@ export class Anagram implements IAnagram {
 
   public isValidWord(word: string): boolean {
     // Must be a single word
+    // Must have min length of 1
     // Must be a dictionary word (english)
     // Must be type string (check for null too)
     // Must NOT have number or symbols
