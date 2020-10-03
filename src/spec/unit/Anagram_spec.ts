@@ -1,5 +1,8 @@
 import "jasmine"
 
+import { IAnagram } from "../../models/IAnagram";
+import { Factory } from "../../Factory"
+
 /*
 Acceptance tests should be written using the standard agile framework of a user story:
 - "As a [role] I want [feature] so that [benefit]"
@@ -15,8 +18,12 @@ Acceptance criteria should be written in terms of scenarios and implemented as c
 */
 
 describe("As a current user", ()=> {
-  it("my dummy tests should succeed", ()=> {
-    expect("test").not.toBe(undefined);
-    expect("test").not.toBe(null);
+  describe("with should submit valid anagram pairs", ()=> {
+
+    let anagram: IAnagram = Factory.createAnagram("wolf", "flow");
+
+    it("which return as valid", ()=> {
+      expect(anagram.isAnagram()).toBe(true);
+    });
   });
 });

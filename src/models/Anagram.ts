@@ -15,12 +15,13 @@ export class Anagram implements IAnagram {
     // Must be a dictionary word (english)
     // Must be type string (check for null too)
     // Must NOT have number or symbols
-
+    
     throw new Error("Method not implemented.");
   }
-
+  
   public isAnagram(): boolean {
     // Two of the same word are also not anagrams
+    // Should be case insensitive
 
     throw new Error("Method not implemented.");
   }
