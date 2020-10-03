@@ -63,13 +63,13 @@ describe("As a current user", ()=> {
   describe("I want to submit invalid anagram pairs with symbols", ()=> {
     it("which return as invalid", ()=> {
       expect(Factory.createAnagram("dormitory!", "dirty room!").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("wolf!", "flow!").isAnagram()).toBe(true);
+      expect(Factory.createAnagram("wolf!", "flow!").isAnagram()).toBe(false);
       expect(Factory.createAnagram("@", "@").isAnagram()).toBe(false);
       expect(Factory.createAnagram("#$%", "%$#").isAnagram()).toBe(false);
     });
   });
 
-  describe("I want to submit invalid multi-wrod anagram pairs", ()=> {
+  describe("I want to submit invalid multi-word anagram pairs", ()=> {
     it("which return as invalid", ()=> {
       expect(Factory.createAnagram("Dormitory", "Dirty room").isAnagram()).toBe(false);
       expect(Factory.createAnagram("dormitory", "dirty room").isAnagram()).toBe(false);
