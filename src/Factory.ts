@@ -5,7 +5,7 @@ import { HomeController } from "./controllers/HomeController";
 import { IController } from "./controllers/IController";
 import { IErrorController } from "./controllers/IErrorController";
 import { Anagram } from "./models/Anagram";
-import { IAnagram } from "./models/IAnagram";
+import { IAnagram, IAnagramModel } from "./models/IAnagram";
 import { SqliteDb } from "./models/SqliteDb";
 import { IDb } from "./models/IDb";
 
@@ -30,7 +30,7 @@ export class Factory {
     return new Anagram.Model();
   }
 
-  public static createSqliteDb(): IDb {
+  public static async createSqliteDb(): Promise<IDb<IAnagramModel>> {
     return new SqliteDb();
   }
 
