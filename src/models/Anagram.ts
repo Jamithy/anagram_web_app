@@ -1,17 +1,16 @@
-import { IAnagram } from "./IAnagram";
+import { IAnagram, IAnagramModel } from "./IAnagram";
 import * as SpellChecker from "simple-spellchecker";
 
 /**
  * Class to verify whether a pair of single words are anagrams of one another
  */
 export class Anagram implements IAnagram {
-  public constructor(word1, word2) {
-    this.word1 = word1;
-    this.word2 = word2;
+  public constructor(words: IAnagramModel) {
+    this.words.word1 = words.word1;
+    this.words.word2 = words.word2;
   }
   
-  word1: string;
-  word2: string;
+  words: Anagram.Model;
   /** String used to explain why a canagram candidate pair was, or was not, an anagram */
   private statusMsg: string = "";
 
@@ -69,19 +68,19 @@ export class Anagram implements IAnagram {
     // Two of the same word are also not anagrams
     // Should be case insensitive
     
-    if (!this.isValidWord(this.word1)) {
+    if (!this.isValidWord(this.words.word1)) {
       return false;
     }
-    if (!this.isValidWord(this.word2)) {
+    if (!this.isValidWord(this.words.word2)) {
       return false;
     }
-    if (this.word1 === this.word2) {
+    if (this.words.word1 === this.words.word2) {
       this.statusMsg = `Please use words that are not identical to eachother.`;
       return false;
     }
 
-    let anagram1 = this.alphabetize(this.word1.toLowerCase());
-    let anagram2 = this.alphabetize(this.word2.toLowerCase());
+    let anagram1 = this.alphabetize(this.words.word1.toLowerCase());
+    let anagram2 = this.alphabetize(this.words.word2.toLowerCase());
 
     if (anagram1 === anagram2) {
       this.statusMsg = `These two words are valid anagrams.`;
@@ -106,5 +105,12 @@ export class Anagram implements IAnagram {
   public getStatusMsg(): string {
     if (this.statusMsg === "") throw Error("Could not get status message.");
     return this.statusMsg;
+  }
+}
+
+export namespace Anagram {
+  export class Model {
+    public word1: string;
+    public word2: string;
   }
 }

@@ -22,8 +22,12 @@ export class Factory {
 
   //#region Models
 
-  public static createAnagram(w1: string, w2: string): IAnagram {
-    return new Anagram(w1, w2);
+  public static createAnagram(w: Anagram.Model): IAnagram {
+    return new Anagram(w);
+  }
+
+  public static createAnagramModel(): Anagram.Model {
+    return new Anagram.Model();
   }
 
   public static createSqliteDb(): IDb {

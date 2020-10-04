@@ -26,7 +26,10 @@ export class HomeController implements IController {
    * @param  res Express Response
    */
   public onPost(req:Express.Request, res:Express.Response): void {
-    let anagram = Factory.createAnagram(req.body.word1, req.body.word2);
+    let words = Factory.createAnagramModel();
+    words.word1 = req.body.word1;
+    words.word2 = req.body.word2;
+    let anagram = Factory.createAnagram(words);
     if(anagram.isAnagram()){
       res.app.locals.success = anagram.getStatusMsg();
       // Add pair to db
