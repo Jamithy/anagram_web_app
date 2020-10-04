@@ -1,6 +1,7 @@
 import { IController } from "./IController";
 import * as Express from 'express'; // needed for types
 import { Factory } from "../Factory";
+import { IAnagramModel } from "../models/IAnagram";
 
 /** The home page of the website, in this case, an anagram checker app */
 export class HomeController implements IController {
@@ -25,14 +26,16 @@ export class HomeController implements IController {
    * @param  req Express Request
    * @param  res Express Response
    */
-  public onPost(req:Express.Request, res:Express.Response): void {
+  public async onPost(req:Express.Request, res:Express.Response): Promise<void> {
     let words = Factory.createAnagramModel();
     words.word1 = req.body.word1;
     words.word2 = req.body.word2;
     let anagram = Factory.createAnagram(words);
-    if(anagram.isAnagram()){
+    if (anagram.isAnagram()) {
       res.app.locals.success = anagram.getStatusMsg();
       // Add pair to db
+      const sqlite = await Factory.createSqliteDb();
+      sqlite.create(words);
       res.redirect(302, "/");
     } else {
       res.app.locals.error = anagram.getStatusMsg();
