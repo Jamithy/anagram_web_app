@@ -29,6 +29,7 @@ export class HomeController implements IController {
     let anagram = Factory.createAnagram(req.body.word1, req.body.word2);
     if(anagram.isAnagram()){
       res.app.locals.success = anagram.getStatusMsg();
+      // Add pair to db
       res.redirect(302, "/");
     } else {
       res.app.locals.error = anagram.getStatusMsg();

@@ -34,5 +34,8 @@ const server: any = app.listen(process.env.PORT, () => {
   console.log(`Server running at http://localhost:${server.address().port}`);
 });
 
+// Init DB (for the demo, data does not need to be persisted between the backend restarts)
+
+
 // Serves all http requests for the server
 Factory.createRouterController(app);
