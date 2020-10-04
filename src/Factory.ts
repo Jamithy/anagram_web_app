@@ -1,3 +1,4 @@
+import { RouterController } from "./controllers/RouterController";
 import { CatchAllController } from "./controllers/CatchAllController";
 import { ExpressErrorController } from "./controllers/ExpressErrorController";
 import { HomeController } from "./controllers/HomeController";
@@ -7,6 +8,14 @@ import { Anagram } from "./models/Anagram";
 import { IAnagram } from "./models/IAnagram";
 
 export class Factory {
+  //#region Base
+
+  public static createRouterController(app): RouterController {
+    return new RouterController(app);
+  }
+
+  //#endregion Base
+
   //#region Models
 
   public static createAnagram(w1: string, w2: string): IAnagram {
