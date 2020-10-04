@@ -36,8 +36,13 @@ export class Anagram implements IAnagram {
     }
 
     if (word.length < 1) {
-      this.statusMsg = `'${word}' has to be at least one character long`;
+      this.statusMsg = `Your entry has to be at least one character long`;
       return false;
+    }
+
+    
+    if (word.length != word.trim().length) {
+      this.statusMsg = `'${word}' has whitespace that you might want to delete.`
     }
 
     if (word.includes(" ")) {
