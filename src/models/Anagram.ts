@@ -36,8 +36,13 @@ export class Anagram implements IAnagram {
     }
 
     if (word.length < 1) {
-      this.statusMsg = `'${word}' has to be at least one character long`;
+      this.statusMsg = `Your entry has to be at least one character long`;
       return false;
+    }
+
+    
+    if (word.length != word.trim().length) {
+      this.statusMsg = `'${word}' has whitespace that you might want to delete.`
     }
 
     if (word.includes(" ")) {
@@ -59,6 +64,10 @@ export class Anagram implements IAnagram {
     return true;
   }
   
+  /**
+   * The algorithm to determine whether two class property strings are
+   * anagrams of one another.
+   */
   public isAnagram(): boolean {
     // Two of the same word are also not anagrams
     // Should be case insensitive
@@ -76,6 +85,7 @@ export class Anagram implements IAnagram {
 
     let anagram1 = this.alphabetize(this.word1.toLowerCase());
     let anagram2 = this.alphabetize(this.word2.toLowerCase());
+    
     if (anagram1 === anagram2) {
       this.statusMsg = `These two words are valid anagrams.`;
       return true;
