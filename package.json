@@ -6,7 +6,8 @@
   "scripts": {
     "build": "rm -rf dist && mkdir dist && cp -r src/assets/ dist/assets/ && cp -r src/views/ dist/views/ && tsc && node-sass dist/assets/scss/style.scss dist/assets/css/style.css && rm -r dist/assets/scss/",
     "start": "cd dist && node index.js",
-    "test": "ts-node node_modules/jasmine/bin/jasmine"
+    "test": "ts-node node_modules/jasmine/bin/jasmine",
+    "doc": "typedoc --out doc src/**/*.ts"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "jasmine": "^3.6.1",
     "node-sass": "^4.14.1",
     "ts-node": "^9.0.0",
+    "typedoc": "^0.19.2",
     "typescript": "^4.0.3"
   }
 }

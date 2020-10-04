@@ -1,19 +1,24 @@
 import { IController } from "./IController";
 import * as Express from 'express'
-import * as session from 'express-session';
 import { Factory } from "../Factory";
 
+/** A Controller to determine what classes should handle which http requests */
 export class RouterController {
   constructor(app) {
     this.getRoutes(app);
   }
   
+  /**
+   * All http requests to be routed should be added to this list
+   * @param app Express class used to handle http requests
+   */
   private getRoutes(app) {
     // Routes
     app.get('/', this.route(Factory.createHomeController(), Router.httpReq.get));
     app.post('/', this.route(Factory.createHomeController(), Router.httpReq.post));
 
     // Handles 404 and 500 errors
+    // NOTE: These two error-based routes should be processed last since order matters
     app.use((Factory.createCatchAllController()).onGet);
     app.use((Factory.createExpressErrorController()).handle);
   }

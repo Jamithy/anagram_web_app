@@ -1,10 +1,11 @@
 import * as Express from 'express'
 import * as session from 'express-session';
-import { IController } from './controllers/IController';
 import { Factory } from './Factory';
 
+// Get environment variables used to determine port, development/deployment status, and so on
 require("dotenv").config({ path: "../.env" });
 
+// Top-level function exported by the express module
 const app = Express();
 
 // Express config
@@ -20,7 +21,7 @@ app.disable('x-powered-by');
 
 app.use('/assets', Express.static('assets'));
 
-// Session
+// Session, used to store persistant data client-side
 app.use(session({
   name: "userSession",
   secret: process.env.EXPRESS_SESSION_SECRET,

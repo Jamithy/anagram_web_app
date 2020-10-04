@@ -2,10 +2,10 @@ import { IController } from "./IController";
 import * as Express from 'express'; // needed for types
 import { Factory } from "../Factory";
 
+/** The home page of the website, in this case, an anagram checker app */
 export class HomeController implements IController {
   /**
-   * Handler for GET request usually from client
-   * Render the webpage corresponding to this controller
+   * Get's the main page, in this case, the single-page anagram checker app
    * @param  req Express Request
    * @param  res Express Response
    */
@@ -19,6 +19,12 @@ export class HomeController implements IController {
     res.app.locals.success = undefined;
   }
 
+  /**
+   * Inputs a post request with word1 and word2 to evaluate whether an
+   * anagram pair exists
+   * @param  req Express Request
+   * @param  res Express Response
+   */
   public onPost(req:Express.Request, res:Express.Response): void {
     let anagram = Factory.createAnagram(req.body.word1, req.body.word2);
     if(anagram.isAnagram()){
