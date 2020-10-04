@@ -6,6 +6,7 @@ import * as SpellChecker from "simple-spellchecker";
  */
 export class Anagram implements IAnagram {
   public constructor(words: IAnagramModel) {
+    this.words = new Anagram.Model;
     this.words.word1 = words.word1;
     this.words.word2 = words.word2;
   }
