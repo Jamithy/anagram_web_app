@@ -12,6 +12,7 @@ export class Anagram implements IAnagram {
   
   word1: string;
   word2: string;
+  /** String used to explain why a canagram candidate pair was, or was not, an anagram */
   private statusMsg: string = "";
 
   /**
@@ -64,10 +65,6 @@ export class Anagram implements IAnagram {
     return true;
   }
   
-  /**
-   * The algorithm to determine whether two class property strings are
-   * anagrams of one another.
-   */
   public isAnagram(): boolean {
     // Two of the same word are also not anagrams
     // Should be case insensitive
@@ -85,7 +82,7 @@ export class Anagram implements IAnagram {
 
     let anagram1 = this.alphabetize(this.word1.toLowerCase());
     let anagram2 = this.alphabetize(this.word2.toLowerCase());
-    
+
     if (anagram1 === anagram2) {
       this.statusMsg = `These two words are valid anagrams.`;
       return true;
@@ -106,10 +103,6 @@ export class Anagram implements IAnagram {
       return string.split('').sort().join('');
   }
 
-  /**
-   * Returns the details of why a pair of words are (or are not) valid anagrams
-   * of one another
-   */
   public getStatusMsg(): string {
     if (this.statusMsg === "") throw Error("Could not get status message.");
     return this.statusMsg;
