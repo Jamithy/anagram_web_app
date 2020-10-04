@@ -35,7 +35,7 @@ const server: any = app.listen(process.env.PORT, () => {
 });
 
 // Init DB (for the demo, data does not need to be persisted between the backend restarts)
-
+let db = Factory.createSqliteDb();
 
 // Serves all http requests for the server
 Factory.createRouterController(app);

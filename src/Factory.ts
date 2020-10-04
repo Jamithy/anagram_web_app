@@ -6,6 +6,8 @@ import { IController } from "./controllers/IController";
 import { IErrorController } from "./controllers/IErrorController";
 import { Anagram } from "./models/Anagram";
 import { IAnagram } from "./models/IAnagram";
+import { SqliteDb } from "./models/SqliteDb";
+import { IDb } from "./models/IDb";
 
 /** Rather than implement and 'new-up' concrete implementation,
  * uses a factory that stores reference to namespaces other than interfaces */
@@ -22,6 +24,10 @@ export class Factory {
 
   public static createAnagram(w1: string, w2: string): IAnagram {
     return new Anagram(w1, w2);
+  }
+
+  public static createSqliteDb(): IDb {
+    return new SqliteDb();
   }
 
   //#endregion Models

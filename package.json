@@ -30,7 +30,8 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "pug": "^3.0.0",
-    "simple-spellchecker": "^1.0.1"
+    "simple-spellchecker": "^1.0.1",
+    "sqlite3": "^5.0.0"
   },
   "devDependencies": {
     "@types/express-session": "^1.17.0",
