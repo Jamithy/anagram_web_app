@@ -1,4 +1,4 @@
-import { HttpException } from "./IHttpException";
+import { IHttpException } from "./IHttpException";
 import { IErrorController } from "./IErrorController";
 import * as Express from 'express'; // needed for types
 
@@ -7,11 +7,14 @@ import * as Express from 'express'; // needed for types
  */
 export class ExpressErrorController implements IErrorController {
   /**
-   * Handler
+   * Exception handler for 500 errors used to provide a clean client interface
+   * when a server-side error has occured.
+   * @param error Error particulars including an http error number and status description
    * @param  req Express Request
    * @param  res Express Response
+   * @param  next If this isn't the final destination, go to next route
    */
-  handle(error:HttpException, _req:Express.Request, res:Express.Response, _next:Express.NextFunction) {
+  handle(error:IHttpException, _req:Express.Request, res:Express.Response, _next:Express.NextFunction) {
     if (error.status == undefined) {
       error.status = 500;
       error.message = "An internal service error has occured";

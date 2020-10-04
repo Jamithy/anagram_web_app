@@ -1,4 +1,4 @@
-import { HttpException } from "./IHttpException";
+import { IHttpException } from "./IHttpException";
 import * as Express from 'express'; // needed for types
 
 /**
@@ -9,5 +9,5 @@ export interface IErrorController {
   /**
    * Save changes to the server
    */
-  handle(err:HttpException, req:Express.Request, res:Express.Response, next:Express.NextFunction):void;
+  handle(err:IHttpException, req:Express.Request, res:Express.Response, next:Express.NextFunction):void;
 }
