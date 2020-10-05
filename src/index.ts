@@ -21,14 +21,6 @@ app.disable('x-powered-by');
 
 app.use('/assets', Express.static('assets'));
 
-// Session, used to store persistant data client-side
-app.use(session({
-  name: "userSession",
-  secret: process.env.EXPRESS_SESSION_SECRET,
-  resave: true,
-  saveUninitialized: true
-}));
-
 // Server
 const server: any = app.listen(process.env.PORT, () => {
   console.log(`Server running at http://localhost:${server.address().port}`);
