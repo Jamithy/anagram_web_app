@@ -7,8 +7,10 @@ class HomeReact extends React.Component {
   }
 
   state = {
+    disabled: false,
     word1: "",
     word2: "",
+    statusMsg: "",
     data: [],
   };
 
@@ -29,7 +31,7 @@ class HomeReact extends React.Component {
 
   renderTableData() {
     return this.state.data.map((anagram) => {
-      const { word1, word2, count } = anagram; //destructuring
+      const { word1, word2, count } = anagram;
       return (
         <tr>
           <td>{word1}</td>
@@ -46,9 +48,42 @@ class HomeReact extends React.Component {
     this.setState({[nam]: val});
   }
 
-  isAnagram(w1, w2) {
-    console.log(w1)
-    console.log(w2)
+  async isAnagram(w1, w2) {
+    if (this.state.disabled) {
+      return;
+    }
+    this.setState({disabled: true});
+    
+    const body = {
+      word1: w1,
+      word2: w2
+    }
+    const postReq = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    };
+    const response = await fetch("/api/v1/anagram/is-anagram", postReq);
+
+    if (response.status !== 200) {
+      throw Error(body.message);
+    }
+
+    const text = await response.text();
+    this.setState({ statusMsg: text });
+
+    // Update table
+    this.componentDidMount();
+    this.setState({disabled: false});
+  }
+
+  // Handler for on click
+  handleClick = (event) => {
+    if (this.state.disabled) {
+      return;
+    }
+    this.setState({disabled: true});
+    this.isAnagram(this.state.word1, this.state.word2);
   }
 
   render() {
@@ -59,7 +94,10 @@ class HomeReact extends React.Component {
         <label htmlFor="word2">Word 2</label>
         <input type="text" onChange={this.myChangeHandler} name="word2" minLength='1' maxLength='50' required/>
 
-        <button onClick={() => this.isAnagram(this.state.word1, this.state.word2)}>Check</button>
+
+        <button onClick={this.handleClick} disabled={this.state.disabled}>Check</button>
+
+        <h2>{this.state.statusMsg}</h2>
 
         <h1 id="title">Top 10 Anagram Pairs</h1>
         <table id="anagram">
@@ -77,5 +115,5 @@ class HomeReact extends React.Component {
   }
 }
 
-const domContainer = document.querySelector("#like_button_container");
+const domContainer = document.querySelector("#home_react");
 ReactDOM.render(e(HomeReact), domContainer);
