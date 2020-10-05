@@ -7,7 +7,7 @@ export interface IDb<T> {
   create(data: T): void;
 
   /** Retrieve currently existing records from db */
-  read(): void;
+  read(): Promise<T[]>;
 
   /** Mutate data within a currently existing record existing with db */
   update(data: T): void;
