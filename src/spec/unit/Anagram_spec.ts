@@ -19,98 +19,98 @@ Acceptance criteria should be written in terms of scenarios and implemented as c
 describe("As a current user", ()=> {
   describe("I want to submit valid anagram pairs", ()=> {
     it("which return as valid", ()=> {
-      expect(Factory.createAnagram("wolf", "flow").isAnagram()).toBe(true);
-      expect(Factory.createAnagram("restful", "fluster").isAnagram()).toBe(true);
-      expect(Factory.createAnagram("knee", "keen").isAnagram()).toBe(true);
-      expect(Factory.createAnagram("listen", "silent").isAnagram()).toBe(true);
+      expect(Factory.createAnagramUnit("wolf", "flow").isAnagram()).toBe(true);
+      expect(Factory.createAnagramUnit("restful", "fluster").isAnagram()).toBe(true);
+      expect(Factory.createAnagramUnit("knee", "keen").isAnagram()).toBe(true);
+      expect(Factory.createAnagramUnit("listen", "silent").isAnagram()).toBe(true);
     });
 
     describe("regardless of capital casing", ()=> {
       it("which return as valid", ()=> {
-        expect(Factory.createAnagram("Wolf", "Flow").isAnagram()).toBe(true);
-        expect(Factory.createAnagram("WOLF", "flow").isAnagram()).toBe(true);
-        expect(Factory.createAnagram("WOLF", "FLOW").isAnagram()).toBe(true);
+        expect(Factory.createAnagramUnit("Wolf", "Flow").isAnagram()).toBe(true);
+        expect(Factory.createAnagramUnit("WOLF", "flow").isAnagram()).toBe(true);
+        expect(Factory.createAnagramUnit("WOLF", "FLOW").isAnagram()).toBe(true);
       });
     })
   });
 
   describe("I want to submit non-anagram pairs", ()=> {
     it("which return as invalid", ()=> {
-      expect(Factory.createAnagram("wolf", "owl").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("grove", "groove").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("grate", "greater").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("wolf", "owl").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("grove", "groove").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("grate", "greater").isAnagram()).toBe(false);
     });
 
     describe("regardless of capital casing", ()=> {
       it("which return as invalid", ()=> {
-        expect(Factory.createAnagram("Wolf", "owl").isAnagram()).toBe(false);
-        expect(Factory.createAnagram("Wolf", "oWl").isAnagram()).toBe(false);
-        expect(Factory.createAnagram("WOLF", "owl").isAnagram()).toBe(false);
-        expect(Factory.createAnagram("WOLF", "owl").isAnagram()).toBe(false);
+        expect(Factory.createAnagramUnit("Wolf", "owl").isAnagram()).toBe(false);
+        expect(Factory.createAnagramUnit("Wolf", "oWl").isAnagram()).toBe(false);
+        expect(Factory.createAnagramUnit("WOLF", "owl").isAnagram()).toBe(false);
+        expect(Factory.createAnagramUnit("WOLF", "owl").isAnagram()).toBe(false);
       });
     })
   });
 
   describe("I want to submit invalid alphanumeric anagram pairs", ()=> {
     it("which return as invalid", ()=> {
-      expect(Factory.createAnagram("123", "owl").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("123", "321").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("Gr0ve", "grove").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("w0lf", "fl0w").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("123", "owl").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("123", "321").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("Gr0ve", "grove").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("w0lf", "fl0w").isAnagram()).toBe(false);
     });
   });
 
   describe("I want to submit invalid anagram pairs with symbols", ()=> {
     it("which return as invalid", ()=> {
-      expect(Factory.createAnagram("dormitory!", "dirty room!").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("wolf!", "flow!").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("@", "@").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("#$%", "%$#").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("dormitory!", "dirty room!").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("wolf!", "flow!").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("@", "@").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("#$%", "%$#").isAnagram()).toBe(false);
     });
   });
 
   describe("I want to submit invalid multi-word anagram pairs", ()=> {
     it("which return as invalid", ()=> {
-      expect(Factory.createAnagram("Dormitory", "Dirty room").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("dormitory", "dirty room").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("Dormitory", "Dirty room").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("dormitory", "dirty room").isAnagram()).toBe(false);
     });
   });
 
   describe("I want to submit null anagram pairs", ()=> {
     it("which return as invalid", ()=> {
-      expect(Factory.createAnagram("", "").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("", "abc").isAnagram()).toBe(false);
-      expect(Factory.createAnagram(null, null).isAnagram()).toBe(false);
-      expect(Factory.createAnagram(null, "abc").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("", "").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("", "abc").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit(null, null).isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit(null, "abc").isAnagram()).toBe(false);
     });
   });
 
   describe("I want to submit max-length anagram pairs", ()=> {
     it("which return as invalid", ()=> {
-      expect(Factory.createAnagram("pneumonoultramicroscopicsilicovolcanoconiosisniosis", "pneumonoultramicroscopicsilicovolcanoconiosisniosis").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("pneumonoultramicroscopicsilicovolcanoconiosisniossi", "pneumonoultramicroscopicsilicovolcanoconiosisniosis").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("pneumonoultramicroscopicsilicovolcanoconiosisniosis", "pneumonoultramicroscopicsilicovolcanoconiosisniosis").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("pneumonoultramicroscopicsilicovolcanoconiosisniossi", "pneumonoultramicroscopicsilicovolcanoconiosisniosis").isAnagram()).toBe(false);
     });
   });
 
   describe("I want to submit arrays", ()=> {
     it("which return as invalid", ()=> {
       // @ts-ignore
-      expect(Factory.createAnagram(["a","b","c"], ["a", "b", "c"]).isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit(["a","b","c"], ["a", "b", "c"]).isAnagram()).toBe(false);
     });
   });
 
   describe("I want to submit non-word anagrams", ()=> {
     it("which return as invalid", ()=> {
       // Not a dictionary word
-      expect(Factory.createAnagram("abc", "bca").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("abc", "bca").isAnagram()).toBe(false);
     });
   });
 
   describe("I want to submit non-english anagrams", ()=> {
     it("which return as invalid", ()=> {
-      expect(Factory.createAnagram("汉字", "字汉").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("漢字", "字漢").isAnagram()).toBe(false);
-      expect(Factory.createAnagram("Ψβ", "βΨ").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("汉字", "字汉").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("漢字", "字漢").isAnagram()).toBe(false);
+      expect(Factory.createAnagramUnit("Ψβ", "βΨ").isAnagram()).toBe(false);
     });
   });
 });

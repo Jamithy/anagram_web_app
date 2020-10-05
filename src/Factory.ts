@@ -26,6 +26,14 @@ export class Factory {
     return new Anagram(w);
   }
 
+  /** Helper function for several unit tests to reduce verbosity by creating models on the fly */
+  public static createAnagramUnit(w1: string, w2: string): IAnagram {
+    let m = new Anagram.Model;
+    m.word1 = w1;
+    m.word2 = w2;
+    return new Anagram(m);
+  }
+
   public static createAnagramModel(): Anagram.Model {
     return new Anagram.Model();
   }
