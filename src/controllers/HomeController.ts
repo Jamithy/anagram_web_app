@@ -11,13 +11,8 @@ export class HomeController implements IController {
    * @param  res Express Response
    */
   public async onGet(_req:Express.Request, res:Express.Response): Promise<void> {
-    // Get top ten most common pairs this session
-    const sqlite = await Factory.createSqliteDb();
-    let topTen = await sqlite.read();
-
     res.render("home", {
       title: "Home",
-      topTen: topTen,
       error: res.app.locals.error,
       success: res.app.locals.success
     });
