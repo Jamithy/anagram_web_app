@@ -7,7 +7,8 @@ class HomeReact extends React.Component {
   }
 
   state = {
-    liked: false,
+    word1: "",
+    word2: "",
     data: [],
   };
 
@@ -39,14 +40,27 @@ class HomeReact extends React.Component {
     });
   }
 
-  render() {
-    if (this.state.liked) {
-      return "test"
-    }
+  myChangeHandler = (event) => {
+    let nam = event.target.name;
+    let val = event.target.value;
+    this.setState({[nam]: val});
+  }
 
+  isAnagram(w1, w2) {
+    console.log(w1)
+    console.log(w2)
+  }
+
+  render() {
     return (
       <div>
-        <button onClick={() => this.setState({ liked: true })}>Like</button>
+        <label htmlFor="word1">Word 1</label>
+        <input type="text" onChange={this.myChangeHandler} name="word1" minLength='1' maxLength='50' autoFocus required/>
+        <label htmlFor="word2">Word 2</label>
+        <input type="text" onChange={this.myChangeHandler} name="word2" minLength='1' maxLength='50' required/>
+
+        <button onClick={() => this.isAnagram(this.state.word1, this.state.word2)}>Check</button>
+
         <h1 id="title">Top 10 Anagram Pairs</h1>
         <table id="anagram">
           <tbody>
