@@ -20,8 +20,8 @@ export class SqliteDb implements IDb<IAnagramModel> {
   public async init() {
     let sql = `CREATE TABLE IF NOT EXISTS 'anagram_pair' (
               'id'	    INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
-              'word_1'	TEXT NOT NULL,
-              'word_2'	TEXT NOT NULL,
+              'word1'	TEXT NOT NULL,
+              'word2'	TEXT NOT NULL,
               'pairing' TEXT NOT NULL
               );
               PRAGMA user_version = 1;`;
@@ -37,7 +37,7 @@ export class SqliteDb implements IDb<IAnagramModel> {
   public async create(data: IAnagramModel) {
     // Sort the pairs so reverse pairings are considered the same
     let sorted = [data.word1, data.word2].sort();
-    let sql = `INSERT INTO 'anagram_pair' (word_1, word_2, pairing)
+    let sql = `INSERT INTO 'anagram_pair' (word1, word2, pairing)
                VALUES ('${sorted[0]}', '${sorted[1]}', '${sorted[0]}|${sorted[1]}');`;
     (await this._db).all(sql, [], async (err, rows) => {
       if (err) {
@@ -47,16 +47,21 @@ export class SqliteDb implements IDb<IAnagramModel> {
     });
   }
 
-  public async read() {
+  public async read(): Promise<IAnagramModel[]> {
     //let words = Factory.createAnagramModel();
-    let sql = `SELECT word_1, word_2 FROM 'anagram_pair'`;
-    (await this._db).all(sql, [], async (err, rows) => {
-      if (err) {
-        (await this._db).close();
-        throw err;
-      }
-      rows.forEach((row) => {
-        console.log(row);
+    let sql = `SELECT word1, word2,
+               COUNT(pairing) AS count
+               FROM 'anagram_pair'
+               GROUP BY pairing
+               ORDER BY count DESC
+               LIMIT 10;`;
+    return new Promise(async (resolve, reject) => {
+      (await this._db).all(sql, [], async (err, rows: Promise<IAnagramModel[]>) => {
+        if (err) {
+          (await this._db).close();
+          reject(err);
+        }
+        resolve(rows);
       });
     });
   }
