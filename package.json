@@ -1,0 +1,47 @@
+{
+  "name": "anagram_web_app",
+  "version": "0.1.0",
+  "description": "A single-page application that: (1) allows users to check whether two words are anagrams (2), shows 10 most popular anagram requests across all users",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist && mkdir dist && cp -r src/assets/ dist/assets/ && cp -r src/views/ dist/views/ && mkdir dist/db/ && tsc && node-sass dist/assets/scss/style.scss dist/assets/css/style.css && rm -r dist/assets/scss/",
+    "start": "cd dist && node index.js",
+    "test": "ts-node node_modules/jasmine/bin/jasmine",
+    "doc": "typedoc --out doc src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/Jamie.Sgro/anagram_web_app.git"
+  },
+  "keywords": [
+    "webapp",
+    "anagram",
+    "code",
+    "test"
+  ],
+  "author": "Jamie Sgro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/Jamie.Sgro/anagram_web_app/issues"
+  },
+  "homepage": "https://gitlab.com/Jamie.Sgro/anagram_web_app#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "pug": "^3.0.0",
+    "simple-spellchecker": "^1.0.1",
+    "sqlite3": "^5.0.0",
+    "typescript": "^4.0.3"
+  },
+  "devDependencies": {
+    "@types/express-session": "^1.17.0",
+    "@types/jasmine": "^3.5.14",
+    "@types/node": "^14.11.2",
+    "@types/sqlite3": "^3.1.6",
+    "jasmine": "^3.6.1",
+    "node-sass": "^4.14.1",
+    "ts-node": "^9.0.0",
+    "typedoc": "^0.19.2"
+  }
+}

@@ -1,0 +1,12 @@
+//- PARAMETER: errorCode {string} error code (i.e 404, 405, 505)
+//- PARAMETER: error {string} error message
+
+extends template/app.pug
+
+block content
+
+   .error
+      
+      h2 ERROR #{errorCode}
+      
+      h3 #{error}
