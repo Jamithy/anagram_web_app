@@ -16,6 +16,7 @@ export class ExpressErrorController implements IErrorController {
    */
   handle(error:IHttpException, _req:Express.Request, res:Express.Response, _next:Express.NextFunction) {
     if (error.status == undefined) {
+      console.log(error);
       error.status = 500;
       error.message = "An internal service error has occured";
     }
