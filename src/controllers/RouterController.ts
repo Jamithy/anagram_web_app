@@ -14,8 +14,8 @@ export class RouterController {
    */
   private getRoutes(app) {
     // Routes
-    app.get('/', this.route(Factory.createHomeController(), Router.httpReq.get));
-    app.post('/', this.route(Factory.createHomeController(), Router.httpReq.post));
+    app.get('/', this.route(Factory.createHomeController(), RouterController.httpReq.get));
+    app.post('/', this.route(Factory.createHomeController(), RouterController.httpReq.post));
 
     // Handles 404 and 500 errors
     // NOTE: These two error-based routes should be processed last since order matters
@@ -28,12 +28,12 @@ export class RouterController {
    * should always be sent to the error page.
    * @param controller The class that corresponds to this particular GET or POST request
    */
-  private route(controller: new () => IController, reqType: Router.httpReq) {
+  private route(controller: new () => IController, reqType: RouterController.httpReq) {
     return function(req:Express.Request, res:Express.Response, next:Express.NextFunction) {
       try {
-        if (reqType == Router.httpReq.get) {
+        if (reqType == RouterController.httpReq.get) {
           (new controller).onGet(req, res, next);
-        } else if (reqType == Router.httpReq.post) {
+        } else if (reqType == RouterController.httpReq.post) {
           (new controller).onPost(req, res, next);
         } else {
           throw new Error("For the sake of this demo, HTTP requests other than GET and POST have not been implemented.");
@@ -45,7 +45,7 @@ export class RouterController {
   }
 }
 
-export namespace Router {
+export namespace RouterController {
   export enum httpReq {
     get,
     head,
