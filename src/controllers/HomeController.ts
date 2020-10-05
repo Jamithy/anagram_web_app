@@ -1,7 +1,6 @@
 import { IController } from "./IController";
 import * as Express from 'express'; // needed for types
 import { Factory } from "../Factory";
-import { IAnagramModel } from "../models/IAnagram";
 
 /** The home page of the website, in this case, an anagram checker app */
 export class HomeController implements IController {
