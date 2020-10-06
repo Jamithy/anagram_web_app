@@ -2,6 +2,10 @@ import { IDb } from "./IDb";
 import * as sqlite3 from 'sqlite3';
 import { IAnagramModel } from "./IAnagram";
 
+/** A Sqlite specific implementation of a database
+ * Used specifically for interacting with the IAnagram
+ * interface.
+ */
 export class SqliteDb implements IDb<IAnagramModel> {
   constructor() {
     this._db = this.getDb();
@@ -48,7 +52,6 @@ export class SqliteDb implements IDb<IAnagramModel> {
   }
 
   public async read(): Promise<IAnagramModel[]> {
-    //let words = Factory.createAnagramModel();
     let sql = `SELECT word1, word2,
       COUNT(pairing) AS count
       FROM 'anagram_pair'
