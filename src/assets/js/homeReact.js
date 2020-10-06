@@ -104,7 +104,7 @@ class HomeReact extends React.Component {
           <tbody>
             <tr>
               <th>Word 1</th>
-              <th>Word 1</th>
+              <th>Word 2</th>
               <th>Count</th>
             </tr>
             {this.renderTableData()}
