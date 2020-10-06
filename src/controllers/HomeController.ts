@@ -11,7 +11,7 @@ export class HomeController implements IController {
    */
   public async onGet(_req:Express.Request, res:Express.Response): Promise<void> {
     res.render("home", {
-      title: "Home",
+      title: "Anagram Web App",
       error: res.app.locals.error,
       success: res.app.locals.success
     });
