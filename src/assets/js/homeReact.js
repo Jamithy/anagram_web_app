@@ -89,27 +89,38 @@ class HomeReact extends React.Component {
   render() {
     return (
       <div>
-        <label htmlFor="word1">Word 1</label>
-        <input type="text" onChange={this.myChangeHandler} name="word1" minLength='1' maxLength='50' autoFocus required/>
-        <label htmlFor="word2">Word 2</label>
-        <input type="text" onChange={this.myChangeHandler} name="word2" minLength='1' maxLength='50' required/>
+        <div id="true_left">
+          <div id="left_content">
+            <div>
+              <h2>Submit an Anagram Pair</h2>
+              <label htmlFor="word1">Word 1</label>
+              <input type="text" onChange={this.myChangeHandler} name="word1" minLength='1' maxLength='50' autoFocus required/>
+              <br/>
+              <label htmlFor="word2">Word 2</label>
+              <input type="text" onChange={this.myChangeHandler} name="word2" minLength='1' maxLength='50' required/>
+              <br/>
+              <button onClick={this.handleClick} disabled={this.state.disabled}>Check</button>
 
+              <h3>{this.state.statusMsg}</h3>
+            </div>
+          </div>
+        </div>
 
-        <button onClick={this.handleClick} disabled={this.state.disabled}>Check</button>
-
-        <h2>{this.state.statusMsg}</h2>
-
-        <h1 id="title">Top 10 Anagram Pairs</h1>
-        <table id="anagram">
-          <tbody>
-            <tr>
-              <th>Word 1</th>
-              <th>Word 2</th>
-              <th>Count</th>
-            </tr>
-            {this.renderTableData()}
-          </tbody>
-        </table>
+        <div id="true_right">
+          <div id="right_content">
+            <h2 id="title">Top 10 Anagram Pairs</h2>
+            <table id="anagram">
+              <tbody>
+                <tr>
+                  <th>Word 1</th>
+                  <th>Word 2</th>
+                  <th>Count</th>
+                </tr>
+                {this.renderTableData()}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     );
   }

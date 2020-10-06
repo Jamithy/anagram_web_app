@@ -2,12 +2,21 @@
 //- PARAMETER: success {string} success message if successful
 
 extends template/app.pug
+include mixins/mixins.pug
 
 block content
-   h2 Anagram Web App
+   body
+      #home_react
 
-   #home_react
-   script(src='https://unpkg.com/react@16/umd/react.development.js', crossorigin='')
-   script(src='https://unpkg.com/react-dom@16/umd/react-dom.development.js', crossorigin='')
-   script(src="https://unpkg.com/babel-standalone@6/babel.min.js")
-   script(src="../assets/js/homeReact.js", type="text/babel")
+      #true_left
+         #left_content
+            h3 What are Anagrams?
+            p An anagram is one or more words that, when the letters are rearranged, form a different word or phrase.
+            p This application determines whether two single words are anagrams, try it out with some of the following pairs:
+            li 'wolf' and 'flow'
+            li 'state' and 'taste'
+            li 'angel' and 'glean'
+         script(src='https://unpkg.com/react@16/umd/react.development.js', crossorigin='')
+         script(src='https://unpkg.com/react-dom@16/umd/react-dom.development.js', crossorigin='')
+         script(src="https://unpkg.com/babel-standalone@6/babel.min.js")
+         script(src="../assets/js/homeReact.js", type="text/babel")
