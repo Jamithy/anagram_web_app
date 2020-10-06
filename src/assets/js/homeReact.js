@@ -22,7 +22,7 @@ class HomeReact extends React.Component {
     const response = await fetch("/api/v1/anagram/top-ten", postReq);
 
     if (response.status !== 200) {
-      throw Error(body.message);
+      throw Error(await response.text());
     }
 
     const json = await response.json();
@@ -54,22 +54,22 @@ class HomeReact extends React.Component {
     }
     this.setState({disabled: true});
     
-    const body = {
+    const reqBody = {
       word1: w1,
       word2: w2
     }
     const postReq = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
+      body: JSON.stringify(reqBody)
     };
     const response = await fetch("/api/v1/anagram/is-anagram", postReq);
+    const text = await response.text();
 
     if (response.status !== 200) {
-      throw Error(body.message);
+      throw Error(text);
     }
 
-    const text = await response.text();
     this.setState({ statusMsg: text });
 
     // Update table

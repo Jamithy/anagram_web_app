@@ -5,13 +5,8 @@ extends template/app.pug
 
 block content
    h2 Anagram Web App
-      .notification
-         if error
-            h2.notification__error #{error}
-         if success 
-            h2.notification__success #{success}
 
-   #home_react(data-commentid='1')
+   #home_react
    script(src='https://unpkg.com/react@16/umd/react.development.js', crossorigin='')
    script(src='https://unpkg.com/react-dom@16/umd/react-dom.development.js', crossorigin='')
    script(src="https://unpkg.com/babel-standalone@6/babel.min.js")
