@@ -43,7 +43,8 @@ export class Anagram implements IAnagram {
 
     
     if (word.length != word.trim().length) {
-      this.statusMsg = `'${word}' has whitespace that you might want to delete.`
+      this.statusMsg = `'${word}' has white space that you might want to delete.`
+      return false;
     }
 
     if (word.includes(" ")) {
