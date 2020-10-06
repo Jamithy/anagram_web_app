@@ -1,6 +1,22 @@
 mixin navigationLinks
+   link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
    ul
+      a(href="#")
+         h2 Anagram Web App
       li 
-         link1
+         a(href="https://en.wikipedia.org/wiki/Anagram")
+            i.fa.fa-fw.fa-wikipedia-w(style='font-size:20px;')
+            |  Wiki
+      li
+         a(href='#')
+            i.fa.fa-fw.fa-book(style='font-size:20px;')
+            |  Docs
       li 
-         link2
+         a(href="https://gitlab.com/Jamie.Sgro/anagram_web_app/")
+            i.fa.fa-fw.fa-gitlab(style='font-size:20px;')
+            |  Git
+
+
+mixin navbar 
+   .mainnav 
+      +navigationLinks
