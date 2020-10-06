@@ -2,16 +2,27 @@
   width: 100%;
 }
 
+#true_left {
+  width: 50%;
+  float: left;
+}
+
+#true_right {
+  width: 50%;
+  float: right;
+}
+
 #left_content, #right_content {
+  box-sizing:border-box;
   border-radius: 4px;
   margin: 25px;
-  width: 35%;
+  width: 75%;
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.025);
   padding: 3rem;
 }
 
 #left_content {
-  float: left;
+  float: right;
   background: white;
 
   & input, label {
@@ -46,9 +57,13 @@
 }
 
 #right_content {
-  float: right;
+  float: left;
   background: white;
   min-height: 500px;
+  
+  & h2 {
+    text-align: center;
+  }
 }
 #clearing_div {
   clear: both;
