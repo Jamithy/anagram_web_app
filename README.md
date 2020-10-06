@@ -39,8 +39,6 @@ A single-page application that:
 
 - `NODE_ENV` - Node Environment (`production` || `development`)
 
-- `EXPRESS_SESSION_SECRET` - Session-wide secret related to storing persistent data client-side
-
   `console.log(process.env.PORT);`
 
 ## Views
