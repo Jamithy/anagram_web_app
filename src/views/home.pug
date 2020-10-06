@@ -4,19 +4,10 @@
 extends template/app.pug
 
 block content
-
    h2 Anagram Web App
-      form(action="/" method="post")
-         label(for='word1') Word 1
-         input(type='text' name='word1' minlength='1' maxlength='50' autofocus required)
-         label(for='word2') Word 2
-         input(type='text' name='word2' minlength='1' maxlength='50' required)
 
-         input(type='submit' class='btn' value="Check") 
-      
-      .notification
-         if error
-            h2.notification__error #{error}
-         if success 
-            h2.notification__success #{success}
-         h4 #{JSON.stringify(topTen)}
+   #home_react
+   script(src='https://unpkg.com/react@16/umd/react.development.js', crossorigin='')
+   script(src='https://unpkg.com/react-dom@16/umd/react-dom.development.js', crossorigin='')
+   script(src="https://unpkg.com/babel-standalone@6/babel.min.js")
+   script(src="../assets/js/homeReact.js", type="text/babel")

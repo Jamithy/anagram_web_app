@@ -13,6 +13,10 @@ export class RouterController {
    * @param app Express class used to handle http requests
    */
   private getRoutes(app) {
+    // API
+    app.post('/api/v1/anagram/top-ten', this.route(Factory.createTopTenController(), RouterController.httpReq.post));
+    app.post('/api/v1/anagram/is-anagram', this.route(Factory.createIsAnagramController(), RouterController.httpReq.post));
+
     // Routes
     app.get('/', this.route(Factory.createHomeController(), RouterController.httpReq.get));
     app.post('/', this.route(Factory.createHomeController(), RouterController.httpReq.post));

@@ -1,7 +1,6 @@
 import { IController } from "./IController";
 import * as Express from 'express'; // needed for types
 import { Factory } from "../Factory";
-import { IAnagramModel } from "../models/IAnagram";
 
 /** The home page of the website, in this case, an anagram checker app */
 export class HomeController implements IController {
@@ -11,13 +10,8 @@ export class HomeController implements IController {
    * @param  res Express Response
    */
   public async onGet(_req:Express.Request, res:Express.Response): Promise<void> {
-    // Get top ten most common pairs this session
-    const sqlite = await Factory.createSqliteDb();
-    let topTen = await sqlite.read();
-
     res.render("home", {
       title: "Home",
-      topTen: topTen,
       error: res.app.locals.error,
       success: res.app.locals.success
     });
