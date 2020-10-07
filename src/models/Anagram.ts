@@ -27,7 +27,7 @@ export class Anagram implements IAnagram {
    */
   private isValidWord(word: string): boolean {
     if (typeof(word) != "string") {
-      this.statusMsg = `'${word}' must only contian letters.`;
+      this.statusMsg = `'${word}' must only contain letters.`;
       return false;
     }
 

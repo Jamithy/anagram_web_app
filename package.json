@@ -1,6 +1,6 @@
 {
   "name": "anagram_web_app",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A single-page application that: (1) allows users to check whether two words are anagrams (2), shows 10 most popular anagram requests across all users",
   "main": "dist/index.js",
   "scripts": {
