@@ -45,7 +45,7 @@ export class SqliteDb implements IDb<IAnagramModel> {
 
   public async create(data: IAnagramModel) {
     // Sort the pairs so reverse pairings are considered the same
-    let sorted = [data.word1, data.word2].sort();
+    let sorted = [data.word1.toLowerCase(), data.word2.toLowerCase()].sort();
     let query = `INSERT INTO 'anagram_pair' (word1, word2, pairing)
       VALUES ('${sorted[0]}', '${sorted[1]}', '${sorted[0]}|${sorted[1]}');`;
     await this.postSql(query);
