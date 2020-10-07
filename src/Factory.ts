@@ -8,6 +8,8 @@ import { Anagram } from "./models/Anagram";
 import { IAnagram, IAnagramModel } from "./models/IAnagram";
 import { SqliteDb } from "./models/SqliteDb";
 import { IDb } from "./models/IDb";
+import { TopTenController } from "./controllers/api/v1/anagram/TopTenController";
+import { IsAnagramController } from "./controllers/api/v1/anagram/IsAnagramController";
 
 /** Rather than implement and 'new-up' concrete implementation,
  * uses a factory that stores reference to namespaces other than interfaces */
@@ -46,10 +48,21 @@ export class Factory {
 
   //#region Controllers
 
+  // Web Pages
   public static createHomeController(): new () => IController {
     return HomeController;
   }
 
+  // API
+  static createTopTenController(): new () => IController {
+    return TopTenController;
+  }
+
+  static createIsAnagramController(): new () => IController {
+    return IsAnagramController;
+  }
+
+  // Errors
   public static createCatchAllController() : IController {
     return new CatchAllController();
   }

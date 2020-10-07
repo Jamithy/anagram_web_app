@@ -2,6 +2,10 @@ import { IDb } from "./IDb";
 import * as sqlite3 from 'sqlite3';
 import { IAnagramModel } from "./IAnagram";
 
+/** A Sqlite specific implementation of a database
+ * Used specifically for interacting with the IAnagram
+ * interface.
+ */
 export class SqliteDb implements IDb<IAnagramModel> {
   constructor() {
     this._db = this.getDb();
@@ -41,14 +45,13 @@ export class SqliteDb implements IDb<IAnagramModel> {
 
   public async create(data: IAnagramModel) {
     // Sort the pairs so reverse pairings are considered the same
-    let sorted = [data.word1, data.word2].sort();
+    let sorted = [data.word1.toLowerCase(), data.word2.toLowerCase()].sort();
     let query = `INSERT INTO 'anagram_pair' (word1, word2, pairing)
       VALUES ('${sorted[0]}', '${sorted[1]}', '${sorted[0]}|${sorted[1]}');`;
     await this.postSql(query);
   }
 
   public async read(): Promise<IAnagramModel[]> {
-    //let words = Factory.createAnagramModel();
     let sql = `SELECT word1, word2,
       COUNT(pairing) AS count
       FROM 'anagram_pair'

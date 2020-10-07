@@ -21,11 +21,24 @@ A single-page application that:
 
    `npm run-script build`
 
-3. To ensure tests are passing, run:
+   ---
+
+   **NOTE**
+
+   In an EC2 instance, you may need to install node first by running
+   `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash`
+   `. ~/.nvm/nvm.sh`
+   `nvm install node`
+
+   ---
+
+   
+
+2. To ensure tests are passing, run:
 
    `npm test`
 
-4. To spin up server (on localhost:8080 by default), run:
+3. To spin up server (on localhost:8080 by default), run:
 
    `npm start`
 
@@ -38,8 +51,6 @@ A single-page application that:
 - `PORT` - Port to run on
 
 - `NODE_ENV` - Node Environment (`production` || `development`)
-
-- `EXPRESS_SESSION_SECRET` - Session-wide secret related to storing persistent data client-side
 
   `console.log(process.env.PORT);`
 
