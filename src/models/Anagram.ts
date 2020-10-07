@@ -53,7 +53,7 @@ export class Anagram implements IAnagram {
     }
 
     if (!/^[a-zA-Z]+$/.test(word)) {
-      this.statusMsg = `'${word}' must only contian letters (no numbers or symbols).`;
+      this.statusMsg = `'${word}' must only contain letters (no numbers or symbols).`;
       return false;
     }
 
